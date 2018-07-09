@@ -34,6 +34,7 @@ class Controller{
             author: req.body.author,
             imgSrc: req.body.imgSrc,
             date: moment().format('MMMM Do YYYY'),
+            realContent: req.body.realContent
         }
         console.log(obj)
         // res.send(obj)

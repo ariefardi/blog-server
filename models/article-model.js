@@ -8,6 +8,7 @@ let articleSchema = Schema({
     author: String,
     imgSrc: String,
     date: String,
+    realContent: String
 },{timestamp: true})
 
 let articles = mongoose.model('Articles',articleSchema)

@@ -30,14 +30,14 @@ class Controller{
         let obj = {
             title: req.body.title,
             content: req.body.content,
+            realContent: req.body.realContent,
             category: req.body.category,
             author: req.body.author,
             imgSrc: req.body.imgSrc,
             date: moment().format('MMMM Do YYYY'),
-            realContent: req.body.realContent
         }
         console.log(obj)
-        // res.send(obj)
+        res.send(obj)
         let newPost = new Model(obj)
         newPost.save()
         .then(article=> {

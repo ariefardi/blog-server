@@ -135,47 +135,48 @@ describe('post article',function(){
             'realContent' : 'real content here'
         })
         .end(function(err,res){
-            let article = res.body
+            let article = res.body.article
+            id = article._id
             expect(res).to.have.status(200)
-            // expect(article).to.have.property('content')
-            // expect(article).to.have.property('category')
-            // expect(article).to.have.property('author')
-            // expect(article).to.have.property('imgSrc')
-            expect(res.body).to.have.property('date')
-            // expect(article).to.have.property('realContent')
             console.log(article, ' ini res body')
+            expect(article).to.have.property('content')
+            expect(article).to.have.property('category')
+            expect(article).to.have.property('author')
+            expect(article).to.have.property('imgSrc')
+            expect(article).to.have.property('date')
+            expect(article).to.have.property('realContent')
             done()
         })
     })
 })
 
-// describe('delete Article',function(){
-//     console.log('delete')
-//     this.timeout(7000)
-//     before(function(done){
-//         console.log('before delete')
-//         chai.request(url)
-//         .post('/users/login')
-//         .type('form')
-//         .send({
-//             '_method' : 'post',
-//             'username' : 'loki',
-//             'password' : '08november'
-//         })
-//         .end(function(err,res){
-//             expect(res).to.have.status(200)
-//             done()
-//         })
-//     })
+describe('delete Article',function(){
+    console.log('delete')
+    this.timeout(7000)
+    before(function(done){
+        console.log('before delete')
+        chai.request(url)
+        .post('/users/login')
+        .type('form')
+        .send({
+            '_method' : 'post',
+            'username' : 'loki',
+            'password' : '08november'
+        })
+        .end(function(err,res){
+            expect(res).to.have.status(200)
+            done()
+        })
+    })
 
-//     it('delete article',function(done){
-//         console.log('masuk delete')
-//         console.log(id,'ini id')
-//         chai.request(url)
-//         .delete('/articles/delete/:id')
-//         .end(function(err,res){
-//             console.log(id)
-//             done()
-//         })
-//     })
-// })
+    it('delete article',function(done){
+        console.log('masuk delete')
+        console.log(id,'ini id')
+        chai.request(url)
+        .delete('/articles/delete/'+id)
+        .end(function(err,res){
+            console.log(id)
+            done()
+        })
+    })
+})

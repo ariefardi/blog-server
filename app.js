@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 
-mongoose.connect(`mongodb://arief:08november@ds125381.mlab.com:25381/livecodedb`)
+// mongoose.connect(`mongodb://arief:08november@ds125381.mlab.com:25381/livecodedb`)
+mongoose.connect('mongodb://arief:08november@ds145121.mlab.com:45121/blog-test')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

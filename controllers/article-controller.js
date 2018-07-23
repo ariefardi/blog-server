@@ -37,7 +37,6 @@ class Controller{
             date: moment().format('MMMM Do YYYY'),
         }
         console.log(obj)
-        res.send(obj)
         let newPost = new Model(obj)
         newPost.save()
         .then(article=> {

@@ -144,7 +144,7 @@ describe('post article',function(){
             expect(article).to.have.property('imgSrc')
             expect(article).to.have.property('date')
             expect(article).to.have.property('realContent')
-            console.log(res.body, ' ini res body')
+            console.log(res, ' ini res body')
             done()
         })
     })

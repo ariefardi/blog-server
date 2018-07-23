@@ -1,45 +1,49 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const expect = chai.expect
+let url = 'http://localhost:3000'
+
 chai.use(chaiHttp)
 
-describe('signup test', function(){
-    it('signup user expect true',function(done){
-        chai.request('localhost:3000')
-        .post('/users/signup')
-        .type('form')
-        .send({
-            '_method': 'post',
-            'username': 'arief',
-            'email': 'arief@mail.com',
-            'password': 'helloworld123'
-        })
-        .end(function(err,res){
-            // console.log("====",res.body)
-            expect(res).to.have.status(200)
-            expect(res.body.dataUser).to.have.property('username')
-            expect(res.body.dataUser).to.have.property('email')
-            expect(res.body.dataUser).to.have.property('password')
-            done()
-        })
-    })
-})
+// describe('register test', function(){
+//     it('register user expect true',function(done){
+//         chai.request(url)
+//         .post('/users/register')
+//         .type('form')
+//         .send({
+//             '_method': 'post',
+//             'username': 'thor',
+//             'email': 'thor@mail.com',
+//             'password': '08november'
+//         })
+//         .end(function(err,res){
+//             console.log("====",res.status)
+//             // expect(res).to.have.status(200)
+//             expect(res.body.user).to.have.property('username')
+//             expect(res.body.user).to.have.property('email')
+//             expect(res.body.user).to.have.property('password')
+//             done()
+//         })
+//     })
+// })
 
 describe('signin test', function(){
     it('signin user expect true',function(done){
-        chai.request('localhost:3000')
-        .post('/users/signin')
+        chai.request('http://localhost:3000')
+        .post('/users/login')
         .type('form')
         .send({
             '_method': 'post',
-            'email': 'arief@mail.com',
-            'password': 'helloworld123'
+            'username': 'thor',
+            'password': '08november'
         })
         .end(function(err,res){
-            console.log("====",res.body.token)
+
+            let user = res.body.found
+            console.log('berhaisl gak')
             expect(res).to.have.status(200)
-            expect(res.body.dataUser).to.have.property('email')
-            expect(res.body.dataUser).to.have.property('password')
+            expect(user).to.have.property('username')
+            expect(user).to.have.property('password')
             done()
         })
     })

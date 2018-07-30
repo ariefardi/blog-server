@@ -5,8 +5,8 @@ const moment = require('moment')
 class Controller{
     static getArticles(req,res){
         Model.find()
-        .populate('comment')
-        .then(dataArticles=> {
+        .populate('comments')
+        .exec((err,dataArticles)=> {
             res.status(200).json({
                 message: 'Data Articles',
                 dataArticles
@@ -15,11 +15,14 @@ class Controller{
     }
     static getOneArticles(req,res){
         Model.find({_id: req.params.id})
+        .populate('comments')
+        .populate('user')
         .then(article=> {
             res.status(200).json({
                 message: 'get One articles',
                 article
             })
+            // console.log(article.comments)
         })
         .catch(err=> {
             res.status(200).json({

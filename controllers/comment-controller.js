@@ -1,7 +1,6 @@
-const Comment = require('../models/article-model')
-const Article = require('../models/comment-model')
+const Article = require('../models/article-model')
+const Comment = require('../models/comment-model')
 const moment = require('moment')
-const jwt = require('jsonwebtoken')
 
 class Controller {
     static addComment (req, res) {

@@ -15,7 +15,12 @@ class Controller{
     }
     static getOneArticles(req,res){
         Model.find({_id: req.params.id})
-        .populate('comments')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
         .populate('user')
         .then(article=> {
             res.status(200).json({

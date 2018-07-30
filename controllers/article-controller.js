@@ -5,6 +5,7 @@ const moment = require('moment')
 class Controller{
     static getArticles(req,res){
         Model.find()
+        .populate('comment')
         .then(dataArticles=> {
             res.status(200).json({
                 message: 'Data Articles',
@@ -34,6 +35,7 @@ class Controller{
             category: req.body.category,
             author: req.body.author,
             imgSrc: req.body.imgSrc,
+            comments: [],
             date: moment().format('MMMM Do YYYY'),
         }
         console.log(obj)

@@ -66,6 +66,33 @@ class Controller{
                 message: 'remove'
             })
         })
+        .catch(err=> {
+            res.status(400).json({
+                message: er.message
+            })
+        })
+    }
+    static updateOne(req,res) {
+        let query = req.params.id
+        let obj = {
+            title: req.body.title,
+            content: req.body.content,
+            realContent: req.body.realContent,
+            category: req.body.category,
+            imgSrc: req.body.imgSrc
+        }
+        Model.findByIdAndUpdate({_id: query},obj)
+        .then(articleUpdated=> {
+            res.status(200).json({
+                message: 'Berhasil update',
+                articleUpdated
+            })
+        })
+        .catch(err=> {
+            res.status(400).json({
+                message: err.message
+            })
+        })
     }
 }
 

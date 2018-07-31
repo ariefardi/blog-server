@@ -7,6 +7,7 @@ const commentController = require('../controllers/comment-controller')
 router.get('/', articleController.getArticles )
 router.get('/showone/:id', articleController.getOneArticles)
 router.post('/', articleController.addArticle)
+router.put('/update/:id', articleController.updateOne)
 router.post('/:id/comment', commentController.addComment)
 router.delete('/delete/:id', articleController.removeOne)
 
